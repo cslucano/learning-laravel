@@ -2,7 +2,6 @@
 
 namespace App\Models;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\File;
 
 class Post 
@@ -41,7 +40,7 @@ class Post
             ->sortByDesc('date');
         });
     }
-
+ 
     public static function find($slug) {
         return static::all()->firstWhere('slug', $slug);
     }

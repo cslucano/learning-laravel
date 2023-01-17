@@ -1,11 +1,4 @@
-<!doctype html>
-
-<title>My Blog</title>
-
-<link rel="stylesheet" href="/app.css">
-<script src="/app.js"></script>
-
-<body>
+<x-layout>
     @foreach ($posts as $post)
         <article>
             <h1>
@@ -19,6 +12,4 @@
             </p>
         </article>
     @endforeach
-</body>
-
-   
+</x-layout>
