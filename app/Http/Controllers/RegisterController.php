@@ -22,8 +22,10 @@ class RegisterController extends Controller
         ]);
 
 
-        User::create($attributes);
+        $user = User::create($attributes);
 
-        return redirect('/')->flash('success', 'Tu cuenta ha sido creada.');
+        auth()->login($user);
+
+        return redirect('/')->with('success', 'Tu cuenta ha sido creada.');
     }
 }
