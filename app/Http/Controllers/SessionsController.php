@@ -19,15 +19,15 @@ class SessionsController extends Controller
             'password' => ['required'],
         ]);
 
-        if (auth()->attempt($attributes)) {
-            session()->regenerate();
-            
-            return redirect('/')->with('success','Bienvenido nuevamente!');
+        if (! auth()->attempt($attributes)) {
+            throw ValidationException::withMessages([
+                'email' => 'Las credenciales proporcionadas no han podido ser verificadas.',
+            ]);
         }
 
-        throw ValidationException::withMessages([
-            'email' => 'Las credenciales proporcionadas no han podido ser verificadas.',
-        ]);
+        session()->regenerate();
+
+        return redirect('/')->with('success','Bienvenido nuevamente!');
     }
 
     public function destroy()
