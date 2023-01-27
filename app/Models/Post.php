@@ -9,9 +9,6 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
-
-    // protected $fillable = ['title'];
 
     protected $with = ['category', 'author'];
 
