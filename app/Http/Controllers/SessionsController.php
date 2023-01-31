@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
 class SessionsController extends Controller
@@ -27,7 +26,7 @@ class SessionsController extends Controller
 
         session()->regenerate();
 
-        return redirect('/')->with('success','Bienvenido nuevamente!');
+        return redirect('/')->with('success', 'Bienvenido nuevamente!');
     }
 
     public function destroy()
