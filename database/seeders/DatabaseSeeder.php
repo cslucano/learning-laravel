@@ -18,13 +18,22 @@ class DatabaseSeeder extends Seeder
     {
         $user = User::factory()->create([
             'name' => 'Carlos Salvatierra',
+            'username' => 'cslucano',
+            'email' => 'cslucano@hotmail.com',
+            'password' => '12345678',
         ]);
 
         $posts = Post::factory(5)->create([
             'user_id' => $user->id,
         ]);
+        Post::factory(5)->create();
 
-        $comments = Comment::factory()->create();
+        foreach ($posts as $post) {
+            $comments = Comment::factory(5)->create([
+                'post_id' => $post->id,
+                'user_id' => $post->user_id,
+            ]);
+        }
     }
 }
 //
